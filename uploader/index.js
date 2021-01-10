@@ -106,13 +106,15 @@ VantComponent({
                     return;
                 }
                 captureData = ['album', 'camera'];
-            } else {
+            } else if(sceneryType == "index") {
                 const tagList = wx.getStorageSync('tagList');
                 if(tagList.length == 0) {
                     wx.showToast({ title: '请至少选择一个标签[实景]', icon: 'none' });
                     return;
                 }
                 captureData = ['camera'];
+            } else {
+                captureData = ['album', 'camera'];
             }
             //album camera
             const { name = '', capture = captureData, maxCount = 100, multiple = false, maxSize, accept, lists, useBeforeRead = false // 是否定义了 beforeRead
